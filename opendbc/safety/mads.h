@@ -133,6 +133,10 @@ inline void m_update_control_state(void) {
   }
 }
 
+inline bool mads_lateral_allowed(void) {
+  return controls_allowed || controls_allowed_lateral;
+}
+
 inline void mads_heartbeat_engaged_check(void) {
   if (controls_allowed_lateral && !heartbeat_engaged_mads) {
     heartbeat_engaged_mads_mismatches += 1U;
