@@ -133,7 +133,7 @@ inline void m_update_control_state(void) {
   }
 }
 
-inline bool mads_lateral_allowed(void) {
+static inline bool mads_lateral_allowed(void) {
   return controls_allowed || controls_allowed_lateral;
 }
 

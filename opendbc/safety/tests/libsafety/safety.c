@@ -235,3 +235,55 @@ void init_tests(void){
   ignition_can = false;
   ignition_can_cnt = 0U;
 }
+
+// ***** MADS helpers *****
+
+void mads_set_button_press(int state);
+void mads_set_button_press(int state){
+  mads_button_press = (ButtonState)state;
+}
+
+bool mads_get_controls_allowed_lateral(void);
+bool mads_get_controls_allowed_lateral(void){
+  return controls_allowed_lateral;
+}
+
+void mads_set_heartbeat_engaged(bool c);
+void mads_set_heartbeat_engaged(bool c){
+  heartbeat_engaged_mads = c;
+}
+
+uint32_t mads_get_heartbeat_mismatches(void);
+uint32_t mads_get_heartbeat_mismatches(void){
+  return heartbeat_engaged_mads_mismatches;
+}
+
+int mads_get_active_disengage_reason(void);
+int mads_get_active_disengage_reason(void){
+  return (int)m_mads_state.current_disengage.active_reason;
+}
+
+int mads_get_pending_disengage_reasons(void);
+int mads_get_pending_disengage_reasons(void){
+  return (int)m_mads_state.current_disengage.pending_reasons;
+}
+
+bool mads_get_controls_requested_lateral(void);
+bool mads_get_controls_requested_lateral(void){
+  return m_mads_state.controls_requested_lateral;
+}
+
+bool mads_get_system_enabled(void);
+bool mads_get_system_enabled(void){
+  return m_mads_state.system_enabled;
+}
+
+void mads_test_exit_controls(int reason);
+void mads_test_exit_controls(int reason){
+  mads_exit_controls((DisengageReason)reason);
+}
+
+void mads_test_set_alternative_experience(int mode);
+void mads_test_set_alternative_experience(int mode){
+  mads_set_alternative_experience(&mode);
+}

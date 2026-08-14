@@ -120,6 +120,19 @@ int mutation_get_active_mutant(void);
 void ignition_can_hook(const CANPacket_t *msg);
 bool get_ignition_can(void);
 void set_ignition_can(bool c);
+
+void mads_state_update(bool op_vehicle_moving, bool op_acc_main, bool op_allowed, bool is_braking, bool steering_disengage);
+void mads_heartbeat_engaged_check(void);
+void mads_test_set_alternative_experience(int mode);
+void mads_test_exit_controls(int reason);
+void mads_set_button_press(int state);
+bool mads_get_controls_allowed_lateral(void);
+void mads_set_heartbeat_engaged(bool c);
+uint32_t mads_get_heartbeat_mismatches(void);
+int mads_get_active_disengage_reason(void);
+int mads_get_pending_disengage_reasons(void);
+bool mads_get_controls_requested_lateral(void);
+bool mads_get_system_enabled(void);
 """)
 
 class LibSafety:
